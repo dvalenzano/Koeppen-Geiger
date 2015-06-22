@@ -11,7 +11,7 @@ import numpy as np
 
 # In[257]:
 
-data = open('/Volumes/group_dv/personal/DValenzano/Dec2014/meteo_data.txt', 'rU').read()
+data = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Dec2014/meteo_data.txt', 'rU').read()
 
 
 # In[258]:
