@@ -219,7 +219,7 @@ lz = 'locality,longitude,latitude,KG-class,KG-descr,KG_numcode\n'+','.join(ls2).
 
 # In[270]:
 
-z = open('/Volumes/group_dv/personal/DValenzano/Dec2014/KG_Rinput.csv', 'w')
+z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Dec2014/KG_Rinput.csv', 'w')
 z.write(lz)
 z.close()
 
