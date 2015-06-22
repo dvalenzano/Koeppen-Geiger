@@ -87,4 +87,4 @@ ggmap(grz.mapp, extent = "panel", maprange=FALSE) %+% climate.kg +aes(x=longitud
 
 
 
-save.image(file="KG_plots.RData")
+save.image(file="KG_plots.RData") #available upon request to dvalenzano[at]age.mpg.de
