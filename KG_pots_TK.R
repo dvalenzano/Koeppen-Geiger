@@ -1,3 +1,4 @@
+#This code is an addition to the KG_plots.R, and adds more stations/localities to the initial map.  
 setwd("/Volumes/group_dv/personal/DValenzano/Dec2014/")
 names(climate.kg)[1] <- paste("longitude") 
 names(climate.kg)[2] <- paste("latitude")
