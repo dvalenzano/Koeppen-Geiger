@@ -1,3 +1,5 @@
+#This code generates a contour map with precipitation and temperature KG values from the KG_Rinput.csv data file. 
+#Additionally, it adds a map of Africa that shows where the zoomed in region is exactly.
 setwd("/Volumes/group_dv/personal/DValenzano/Dec2014/")
 
 library(ggmap)
