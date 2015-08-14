@@ -223,5 +223,9 @@ z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Dec2014/KG_Rinput
 z.write(lz)
 z.close()
 
+# I now compare the new file generated today, to that generated last December. 
+
+lz_old = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Dec2014/KG_Rinput.csv', 'rU').read()
+lz == lz_old
 
 # In[ ]:
