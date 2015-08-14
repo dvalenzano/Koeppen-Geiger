@@ -1,35 +1,39 @@
+
+# coding: utf-8
+
+# In[7]:
+
 #Goal: to allow Koeppen-Geiger classification for the meteo-data based on the reference table from:
 #http://www.hydrol-earth-syst-sci.net/11/1633/2007/hess-11-1633-2007.pdf
-#all this data is analyzed in ipython notebook
 
 
-# In[82]:
+# In[8]:
 
 import math
 import numpy as np
 
 
-# In[257]:
+# In[9]:
 
 data = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Dec2014/meteo_data.txt', 'rU').read()
 
 
-# In[258]:
+# In[10]:
 
 stations = data.split('\n\n')[:-1]
 
 
-# In[259]:
+# In[11]:
 
 onestation = data.split('\n\n')[5].split('\n')
 
 
-# In[260]:
+# In[12]:
 
 onestation
 
 
-# In[261]:
+# In[36]:
 
 class getKG(object):
 
@@ -47,8 +51,8 @@ class getKG(object):
         self.Tcol = min(self.T) # temperature of the coldest mont
         self.Tmon10 = len([ i for i in self.T if i>10]) # n. of months where the temperature is above 10
         self.Pdry = min(self.P) # precipitation of the driest month
-        self.T_ONDJFM = self.T[:4]+self.T[10:] # temperature from Oct to Mar
-        self.T_AMJJAS = self.T[4:10] # temperature from Apr to Sep
+        self.T_ONDJFM = self.T[:3]+self.T[9:] # temperature from Oct to Mar
+        self.T_AMJJAS = self.T[3:9] # temperature from Apr to Sep
         self.winter = map(int, ['9,10,11,0,1,2' if self.T_ONDJFM < self.T_AMJJAS else '3,4,5,6,7,8'][0].split(',')) # winter - defined by coldest 6 monts
         self.summer = map(int, ['9,10,11,0,1,2' if self.T_ONDJFM > self.T_AMJJAS else '3,4,5,6,7,8'][0].split(',')) # summer - defined by warmest 6 months
         self.Psdry = min([ self.P[i] for i in self.summer ]) # precipitation of the driest month in summer
@@ -169,13 +173,18 @@ class getKG(object):
 ###################################### END OF LOOP ######################################
 
 
-# In[262]:
+# In[37]:
 
-prova = getKG(stations[1])
-prova.KG_class
+prova = getKG(stations[70])
+prova.T
 
 
-# In[263]:
+# In[37]:
+
+
+
+
+# In[38]:
 
 ls = []
 for i in stations:
@@ -183,45 +192,59 @@ for i in stations:
     ls.append(st.locality +','+ st.lon +','+ st.lat + ','+st.KG_class)
 
 
-# In[264]:
+# In[39]:
 
 from sets import Set
 c_classes  = Set([i.split(',')[-2] for i in ls ])
-list(classes)
+list(c_classes)
 
 
-# In[265]:
+# In[40]:
 
 Classes  = Set([i.split(',')[-1] for i in ls ])
 list(Classes)
 
 
-# In[266]:
+# In[41]:
 
-c_values = ['8','1','13','11','5','3']
-dv = dict(zip(c_classes, c_values))
-
-
-# In[267]:
-
-dv
+#c_values = ['8','1','13','11', '5', '3', '1']
+#dv = dict(zip(c_classes, c_values))
 
 
-# In[268]:
+# In[42]:
+
+dv = {'CWb':'1', 'CFa':'3', 'CWa':'5', 'CSa': '7', 'Am': '10', 'BSh': '13', 'BWh': '15'}
+
+
+# In[43]:
 
 ls2 = [ i+','+dv[i.split(',')[3]]+'\n' for i in ls ]
 
 
-# In[269]:
+# In[44]:
 
 lz = 'locality,longitude,latitude,KG-class,KG-descr,KG_numcode\n'+','.join(ls2).replace('\n,','\n')
 
 
-# In[270]:
+# In[46]:
 
-z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Dec2014/KG_Rinput.csv', 'w')
+z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Aug2015/KG_Rinput_2.csv', 'w')
 z.write(lz)
 z.close()
 
 
+# In[217]:
+
+prova = getKG(stations[70])
+prova.MAT
+
+
+# In[140]:
+
+stations[70].split('\n')
+
+
 # In[ ]:
+
+
+
